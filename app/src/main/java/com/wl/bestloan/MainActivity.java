@@ -1,9 +1,7 @@
-package com.example.tf.bastloan;
+package com.wl.bestloan;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
-import com.wl.bestloan.R;
+import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
