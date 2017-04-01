@@ -1,4 +1,4 @@
-package com.example.tf.bastloan;
+package com.wise.fortune.bestloan;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.tf.bastloan", appContext.getPackageName());
+        assertEquals("com.example.tf.bestloan", appContext.getPackageName());
     }
 }

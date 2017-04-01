@@ -1,4 +1,4 @@
-package com.example.tf.bastloan;
+package com.wise.fortune.bestloan;
 
 import org.junit.Test;
 
