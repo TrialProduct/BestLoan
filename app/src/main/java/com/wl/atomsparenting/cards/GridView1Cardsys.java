@@ -23,7 +23,7 @@ public class GridView1Cardsys extends BaseCard {
     private ArrayList<Griddomain> mlist;
     private int mimage[] = {
             R.drawable.story,
-            R.drawable.Health,
+            R.drawable.health,
             R.drawable.english,
             R.drawable.icon_podcast_psychology,
             R.drawable.handwork,

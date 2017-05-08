@@ -1,6 +1,7 @@
 package com.wl.atomsparenting.adapter;
 
 import android.content.Context;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +12,20 @@ import com.wl.atomsparenting.beans.GridView2Bean;
 import com.wl.atomsparenting.beans.MainActivityTopticBean;
 import com.wl.atomsparenting.beans.RollPagerView2Bean;
 import com.wl.atomsparenting.beans.RollPagerViewBean;
-import com.wl.atomsparenting.beans.TarentoBean;
-import com.wl.atomsparenting.beans.ThirdSmallClassBean;
 import com.wl.atomsparenting.beans.SecondFragmentActionBean;
 import com.wl.atomsparenting.beans.SecondFragmentCircleBean;
+import com.wl.atomsparenting.beans.TarentoBean;
+import com.wl.atomsparenting.beans.ThirdSmallClassBean;
 import com.wl.atomsparenting.cards.BaseCard;
 import com.wl.atomsparenting.cards.GridView1Cardsys;
 import com.wl.atomsparenting.cards.GridView2Card;
 import com.wl.atomsparenting.cards.MainActivityTopticCard;
 import com.wl.atomsparenting.cards.RollPagerView2Card;
 import com.wl.atomsparenting.cards.RollPagerViewCard;
-import com.wl.atomsparenting.cards.TarentoCard;
-import com.wl.atomsparenting.cards.ThirdSmallClassCard;
 import com.wl.atomsparenting.cards.SecondFragmentActionCard;
 import com.wl.atomsparenting.cards.SecondFragmentCircleCard;
+import com.wl.atomsparenting.cards.TarentoCard;
+import com.wl.atomsparenting.cards.ThirdSmallClassCard;
 
 import java.util.ArrayList;
 
@@ -55,21 +56,21 @@ public class FourFragmentAdapter extends RecyclerView.Adapter<FourFragmentAdapte
             view = new GridView2Card(context);
         } else if (viewType == MainActivityTopticBean.class.getCanonicalName().hashCode()) {
             view = new MainActivityTopticCard(context);
-<<<<<<< HEAD
+
         } else if (viewType == SecondFragmentCircleBean.class.getCanonicalName().hashCode()) {
-            view = new TwoFragmentCircleCard(context);
-        } else if (viewType == SecondFragmentActionBean.class.getCanonicalName().hashCode()) {
-            view = new TwoFragmentActionCard(context);
-        } else if (viewType == ThirdSmallClassBean.class.getCanonicalName().hashCode()) {
-            view = new ThreeSmallClassCard(context);
-=======
-        } else if (viewType == TwoFragmentCircleBean.class.getCanonicalName().hashCode()) {
-            view = new SecondFragmentCircleCard(context);
-        } else if (viewType == TwoFragmentActionBean.class.getCanonicalName().hashCode()) {
             view = new SecondFragmentActionCard(context);
-        } else if (viewType == ThreeSmallClassBean.class.getCanonicalName().hashCode()) {
+        } else if (viewType == SecondFragmentActionBean.class.getCanonicalName().hashCode()) {
+            view = new SecondFragmentActionCard(context);
+        } else if (viewType == ThirdSmallClassBean.class.getCanonicalName().hashCode()) {
             view = new ThirdSmallClassCard(context);
->>>>>>> 0824dcbf302978b2cda6d494d04e7a1c9a0aa1d1
+
+        } else if (viewType == SecondFragmentActionCard.class.getCanonicalName().hashCode()) {
+            view = new SecondFragmentCircleCard(context);
+        } else if (viewType == SecondFragmentActionCard.class.getCanonicalName().hashCode()) {
+            view = new SecondFragmentActionCard(context);
+        } else if (viewType == ThirdSmallClassBean.class.getCanonicalName().hashCode()) {
+            view = new ThirdSmallClassCard(context);
+
         } else if (viewType == RollPagerView2Bean.class.getCanonicalName().hashCode()) {
             view = new RollPagerView2Card(context);
         }
