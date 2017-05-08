@@ -98,9 +98,9 @@ public class MainFragment extends Fragment implements RadioGroup.OnCheckedChange
         for (int i = 0; i < rg.getChildCount(); i++) {
             if (rb[i].getId() == j) {
                 if (list.get(i).isAdded()) {
-                    fragmentTransaction.show(list.get(i)).hide(list.get(num)).commit();
+                    fragmentTransaction.hide(list.get(num)).show(list.get(i)).commit();
                 } else {
-                    fragmentTransaction.add(R.id.main_layout, list.get(i)).hide(list.get(num)).commit();
+                    fragmentTransaction.hide(list.get(num)).add(R.id.main_layout, list.get(i)).commit();
                 }
                 num = i;
             }

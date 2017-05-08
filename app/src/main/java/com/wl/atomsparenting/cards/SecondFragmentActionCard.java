@@ -12,12 +12,12 @@ import com.wl.atomsparenting.beans.BaseBean;
  * Created by le on 2017/4/17.
  */
 
-public class TwoFragmentActionCard extends BaseCard {
-    public TwoFragmentActionCard(@NonNull Context context) {
+public class SecondFragmentActionCard extends BaseCard {
+    public SecondFragmentActionCard(@NonNull Context context) {
         super(context);
     }
 
-    public TwoFragmentActionCard(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SecondFragmentActionCard(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="225dp">
         <ImageView
-            android:id="@+id/maingong_listimg"
+            android:id="@+id/ivHotToptic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:background="#45000000"/>
         <TextView
-            android:id="@+id/maingong_tv"
+            android:id="@+id/mTvHotTopticTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="家有掌中宝，了解这些烦恼！"
@@ -24,7 +24,7 @@
             android:textSize="20sp"
             android:textColor="#fff"/>
         <TextView
-            android:id="@+id/tvlike"
+            android:id="@+id/mTvHotTopticLike"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="3"
@@ -38,12 +38,12 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/icon_topic_collect"
-            android:layout_toLeftOf="@id/tvlike"
-            android:layout_alignBottom="@id/tvlike"
+            android:layout_toLeftOf="@id/mTvHotTopticLike"
+            android:layout_alignBottom="@id/mTvHotTopticLike"
             android:layout_marginRight="6dp"
             />
         <TextView
-            android:id="@+id/tvassess"
+            android:id="@+id/mTvHotTopticAssess"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:text="132"
@@ -57,8 +57,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/icon_topic_eye"
-            android:layout_toLeftOf="@id/tvassess"
-            android:layout_alignBottom="@id/tvassess"
+            android:layout_toLeftOf="@id/mTvHotTopticAssess"
+            android:layout_alignBottom="@id/mTvHotTopticAssess"
             android:layout_marginRight="6dp"
             />
     </RelativeLayout>

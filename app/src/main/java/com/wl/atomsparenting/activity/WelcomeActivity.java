@@ -88,7 +88,7 @@ public class WelcomeActivity extends Activity {
 
     private void initFirstData() {
         RequestQueue mQueue = Volley.newRequestQueue(this);
-        MyStringRequest stringRequest = new MyStringRequest("http://169.254.62.218:8889/AllData",//"http://169.254.214.59:8889",
+        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/AllData",//"http://169.254.214.59:8889",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

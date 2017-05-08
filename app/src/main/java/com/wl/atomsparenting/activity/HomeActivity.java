@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class HomeActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
     private RadioGroup rg;
     private RadioButton[] rb;
-    private ArrayList<Fragment> listfragment;
+    private ArrayList<Fragment> fragmentArrayList;
     private FragmentManager supportFragmentManager;
     private int num;
 
@@ -36,63 +36,61 @@ public class HomeActivity extends FragmentActivity implements RadioGroup.OnCheck
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homeactivity);
-        initView();
-        initFragment();
-        initLunbo();
 
-        SharedPreferences sp = getSharedPreferences("count", Context.MODE_PRIVATE+Context.MODE_APPEND);
+        initView();
+
+        initFragment();
+
+
+        SharedPreferences sp = getSharedPreferences("count", Context.MODE_PRIVATE + Context.MODE_APPEND);
 
         //获取count文件下的appcount的值
-        int i = sp.getInt("appcount",0);
+        int i = sp.getInt("appcount", 0);
         //获取编辑对象
-        SharedPreferences.Editor ed=sp.edit();
-        ed.putInt("appcount",++i);
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putInt("appcount", ++i);
         ed.commit();
 
 
     }
 
 
-
-
-
-
-
-    private void initLunbo() {
-
-    }
-
     private void initFragment() {
-        listfragment = new ArrayList<>();
+
+        fragmentArrayList = new ArrayList<>();
 
         MainFragment mainFragment = new MainFragment();
         TwoFragment twoFragment = new TwoFragment();
         ThreeFragment threeFragment = new ThreeFragment();
         FourFragment fourFragment = new FourFragment();
 
-        listfragment.add(mainFragment);
-        listfragment.add(twoFragment);
-        listfragment.add(threeFragment);
-        listfragment.add(fourFragment);
+        fragmentArrayList.add(mainFragment);
+        fragmentArrayList.add(twoFragment);
+        fragmentArrayList.add(threeFragment);
+        fragmentArrayList.add(fourFragment);
 
         supportFragmentManager = getSupportFragmentManager();
-        supportFragmentManager.beginTransaction().add(R.id.home_relativeLayout, listfragment.get(0)).commit();
+        supportFragmentManager.beginTransaction().add(R.id.home_relativeLayout, fragmentArrayList.get(0)).commit();
 
     }
 
     private void initView() {
         rg = (RadioGroup) findViewById(R.id.home_rg);
+
         rb = new RadioButton[rg.getChildCount()];
         for (int i = 0; i < rg.getChildCount(); i++) {
             rb[i] = (RadioButton) rg.getChildAt(i);
         }
+
         rb[0].setChecked(true);
         rb[0].setTextColor(Color.rgb(255, 153, 158));
+
         rg.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
         switch (i) {
             case R.id.home_rb1:
                 showfragment(i);
@@ -101,6 +99,7 @@ public class HomeActivity extends FragmentActivity implements RadioGroup.OnCheck
                 rb[2].setTextColor(Color.BLACK);
                 rb[3].setTextColor(Color.BLACK);
                 break;
+
             case R.id.home_rb2:
                 showfragment(i);
                 rb[1].setTextColor(Color.rgb(255, 153, 158));
@@ -108,6 +107,7 @@ public class HomeActivity extends FragmentActivity implements RadioGroup.OnCheck
                 rb[2].setTextColor(Color.BLACK);
                 rb[3].setTextColor(Color.BLACK);
                 break;
+
             case R.id.home_rb3:
                 showfragment(i);
                 rb[2].setTextColor(Color.rgb(255, 153, 158));
@@ -115,6 +115,7 @@ public class HomeActivity extends FragmentActivity implements RadioGroup.OnCheck
                 rb[0].setTextColor(Color.BLACK);
                 rb[3].setTextColor(Color.BLACK);
                 break;
+
             case R.id.home_rb4:
                 showfragment(i);
                 rb[3].setTextColor(Color.rgb(255, 153, 158));
@@ -122,19 +123,35 @@ public class HomeActivity extends FragmentActivity implements RadioGroup.OnCheck
                 rb[2].setTextColor(Color.BLACK);
                 rb[0].setTextColor(Color.BLACK);
                 break;
+
             default:
                 break;
         }
     }
 
     private void showfragment(int i) {
+
         FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
+
         for (int i1 = 0; i1 < rg.getChildCount(); i1++) {
+
             if (rb[i1].getId() == i) {
-                if (listfragment.get(i1).isAdded()) {
-                    fragmentTransaction.show(listfragment.get(i1)).hide(listfragment.get(num)).commit();
+
+
+
+
+
+
+
+
+
+
+
+
+                if (fragmentArrayList.get(i1).isAdded()) {
+                    fragmentTransaction.hide(fragmentArrayList.get(num)).show(fragmentArrayList.get(i1)).commit();
                 } else {
-                    fragmentTransaction.add(R.id.home_relativeLayout, listfragment.get(i1)).hide(listfragment.get(num)).commit();
+                    fragmentTransaction.hide(fragmentArrayList.get(num)).add(R.id.home_relativeLayout, fragmentArrayList.get(i1)).commit();
                 }
                 num = i1;
             }

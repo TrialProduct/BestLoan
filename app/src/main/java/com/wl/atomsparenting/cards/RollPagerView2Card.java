@@ -27,17 +27,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.wl.atomsparenting.R.id.micro_rollPV;
+
 /**
  * Created by le on 2017/4/28.
  */
 
 public class RollPagerView2Card extends BaseCard{
-    private String path = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
-    private ContentResolver resolver;
+    private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
+    private ContentResolver mresolver;
 
-    private RollPagerView micro_rollPV;
-    private ArrayList<String> listRollpager;
-    private RollPagerAdapter rollpageradapter;
+    private RollPagerView mmicro_rollPV;
+    private ArrayList<String> mlistRollpager;
+    private RollPagerAdapter mrollpageradapter;
     public RollPagerView2Card(@NonNull Context context) {
         super(context);
     }
@@ -53,16 +55,16 @@ public class RollPagerView2Card extends BaseCard{
 
     @Override
     protected void getMaterial() {
-        micro_rollPV = (RollPagerView) mView.findViewById(R.id.micro_rollPV);
-        listRollpager=new ArrayList<>();
+        mmicro_rollPV = (RollPagerView) mView.findViewById(micro_rollPV);
+        mlistRollpager=new ArrayList<>();
         //设置每个图片的切换时间
-        micro_rollPV.setPlayDelay(3000);
+        mmicro_rollPV.setPlayDelay(3000);
         //设置图片切换动画时间
-        micro_rollPV.setAnimationDurtion(500);
+        mmicro_rollPV.setAnimationDurtion(500);
         //设置指示器:
         //rollPV.setHintView(new IconHintView());
         //rollPV.setHintView(new IconHintView(this,R.mipmap.ic_launcher,R.mipmap.ic_launcher));
-        micro_rollPV.setHintView(new ColorPointHintView(mContext, getResources().getColor(R.color.colorrollpagerView), R.color.colorView));
+        mmicro_rollPV.setHintView(new ColorPointHintView(mContext, getResources().getColor(R.color.colorrollpagerView), R.color.colorView));
 
         //设置每一个图片的点击事件
 //        rollPV.setOnItemClickListener(new OnItemClickListener() {
@@ -73,111 +75,24 @@ public class RollPagerView2Card extends BaseCard{
 //            }
 //        });
         //设置适配器
-        listRollpager=new ArrayList<>();
-        rollpageradapter=new RollPagerAdapter(listRollpager);
-        micro_rollPV.setAdapter(rollpageradapter);
+        mlistRollpager=new ArrayList<>();
+        mrollpageradapter=new RollPagerAdapter(mlistRollpager);
+        mmicro_rollPV.setAdapter(mrollpageradapter);
     }
 
 
     @Override
     public void bindBean(BaseBean baseBean) {
 
-//        RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/MainRollpagerBeanMicroBean",//"http://169.254.214.59:8889",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.e("RollPagerView2Card",response);
-//                        try {
-//                            listRollpager.clear();
-//                            JSONArray jsonArray=new JSONArray(response);
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject jo=jsonArray.getJSONObject(i);
-//                                String strPicUrl=jo.getString("strPicUrl");
-//                                listRollpager.add(strPicUrl);
-//
-//                            }
-//                            rollpageradapter.notifyDataSetChanged();
-//
-//                        }
-//                        catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("RollPagerView2Card", "onErrorResponse" + error.getMessage(), error);
-//                    }
-//                });
-//
-//        mQueue.add(stringRequest);
 
 
-
-
-
-
-
-
-
-
-        resolver = getContext().getContentResolver();
-//        SharedPreferences share = getContext().getSharedPreferences("config2", Context.MODE_PRIVATE + Context.MODE_APPEND);
-//
-//        boolean b = share.getBoolean("is_first", true);
-//        if (b) {
-//            RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//            MyStringRequest stringRequest = new MyStringRequest("http://169.254.214.59:8889/MainRollpagerMicroBean",//"http://169.254.214.59:8889",
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.e("MainRollpagerBeanMicroBean",response);
-//
-//                            ContentValues contentvalues = new ContentValues();
-//                            contentvalues.put(SQLiteColumn.JSONSTRING,response);
-//                            contentvalues.put(SQLiteColumn.RECORDTYPE,"MainRollpagerBeanMicroBean");
-//                            resolver.insert(Uri.parse(path),contentvalues);
-//                            try {
-//                                listRollpager.clear();
-//                                JSONArray jsonArray=new JSONArray(response);
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//                                    JSONObject jo=jsonArray.getJSONObject(i);
-//                                    String strPicUrl=jo.getString("strPicUrl");
-//                                    listRollpager.add(strPicUrl);
-//
-//                                }
-//                                rollpageradapter.notifyDataSetChanged();
-//
-//                            }
-//                            catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("MainRollpagerBeanMicroBean", "onErrorResponse" + error.getMessage(), error);
-//                        }
-//                    });
-//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-//                    (int) MyStringRequest.SOCKET_TIMEOUT, 0,
-//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//            mQueue.add(stringRequest);
-     //       share.edit().putBoolean("is_first", false).commit();
-//        }else {
-
-
-
-
+        mresolver = getContext().getContentResolver();
 
 
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
-        Cursor cursor = resolver.query(Uri.parse(path), null, null, null, null);
+        Cursor cursor = mresolver.query(Uri.parse(mpath), null, null, null, null);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -195,15 +110,15 @@ public class RollPagerView2Card extends BaseCard{
                 if (dataArrayList.get(j).getRecordType().equals("mainRollpagermicroBeen")) {
 
                     try {
-                        listRollpager.clear();
+                        mlistRollpager.clear();
                         JSONArray jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jo = jsonArray.getJSONObject(i);
                             String strPicUrl = jo.getString("strPicUrl");
-                            listRollpager.add(strPicUrl);
+                            mlistRollpager.add(strPicUrl);
 
                         }
-                        rollpageradapter.notifyDataSetChanged();
+                        mrollpageradapter.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -218,27 +133,15 @@ public class RollPagerView2Card extends BaseCard{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
     //适配器
     private class RollPagerAdapter extends StaticPagerAdapter {
-        ArrayList<String> listRollpager;
+        ArrayList<String> mlistRollpager;
         ImageView view;
         public RollPagerAdapter(ArrayList<String> listRollpager) {
-            this.listRollpager = listRollpager;
+            this.mlistRollpager = listRollpager;
         }
 
 
@@ -250,7 +153,7 @@ public class RollPagerView2Card extends BaseCard{
 
             view = new ImageView(container.getContext());
             Picasso.with(getContext())
-                    .load(listRollpager.get(position))
+                    .load(mlistRollpager.get(position))
                     .config(Bitmap.Config.RGB_565)
                     .fit().centerCrop()
                     .into(view);
@@ -266,7 +169,7 @@ public class RollPagerView2Card extends BaseCard{
 
         @Override
         public int getCount() {
-            return listRollpager.size();
+            return mlistRollpager.size();
         }
     }
 }
