@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.Gridbaseadapter;
+import com.wl.atomsparenting.adapter.OptionAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.domain.Griddomain;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class GridView1Card extends BaseCard {
     private GridView gridview;
-    private Gridbaseadapter adapter;
+    private OptionAdapter adapter;
     private ArrayList<Griddomain> list;
     private int image[] = {
             R.drawable.gushi,
@@ -64,7 +64,7 @@ public class GridView1Card extends BaseCard {
             Griddomain gd = new Griddomain(image[i], strname[i]);
             list.add(gd);
         }
-        adapter = new Gridbaseadapter(list, mContext);
+        adapter = new OptionAdapter(list, mContext);
         gridview.setAdapter(adapter);
     }
 }

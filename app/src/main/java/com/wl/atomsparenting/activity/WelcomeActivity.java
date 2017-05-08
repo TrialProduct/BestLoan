@@ -39,8 +39,11 @@ public class WelcomeActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcomeactivity);
+
         databaseTable = SqliteDatabaseTable.getInstance(this);
+
         resolver = getContentResolver();
+
         //获取共享参数存储对象
         SharedPreferences sp = getSharedPreferences("count", Context.MODE_PRIVATE+Context.MODE_APPEND);
 
@@ -58,6 +61,7 @@ public class WelcomeActivity extends Activity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+
                     Intent mainIntent = new Intent(WelcomeActivity.this, HomeActivity.class);
                     WelcomeActivity.this.startActivity(mainIntent);
 
@@ -88,7 +92,8 @@ public class WelcomeActivity extends Activity {
 
     private void initFirstData() {
         RequestQueue mQueue = Volley.newRequestQueue(this);
-        MyStringRequest stringRequest = new MyStringRequest("http://169.254.62.218:8889/AllData",//"http://169.254.214.59:8889",
+
+        MyStringRequest stringRequest = new MyStringRequest("http://192.168.24.1:8889/AllData",//"http://169.254.214.59:8889",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -142,7 +147,6 @@ public class WelcomeActivity extends Activity {
                             contentvalues7.put(SQLiteColumn.JSONSTRING, mainRollpagermicroBeen);
                             contentvalues7.put(SQLiteColumn.RECORDTYPE, "mainRollpagermicroBeen");
                             resolver.insert(Uri.parse(path), contentvalues7);
-                            Log.e("SQlite -- mainRollpagermicroBeen --",mainRollpagermicroBeen);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -163,10 +167,13 @@ public class WelcomeActivity extends Activity {
 
 
     private void initUpdata() {
+
         String str = SqliteReadDataUtil.getSqliteData("allData",resolver);
         String strMD5 = MD5Util.encrypt(str);
+
         RequestQueue mQueue = Volley.newRequestQueue(this);
-        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/AllData?MD5="+strMD5,//"http://169.254.214.59:8889",
+
+        MyStringRequest stringRequest = new MyStringRequest("http://192.168.24.1:8889/AllData?MD5="+strMD5,//"http://169.254.214.59:8889",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

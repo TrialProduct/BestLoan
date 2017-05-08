@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.ListViewAdapter;
+import com.wl.atomsparenting.adapter.HotTopTicAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
@@ -33,7 +33,7 @@ public class MainActivityTopticCard extends BaseCard {
 
     private CursorListView listview;
     private ArrayList<HotTopticBean> list;
-    private ListViewAdapter listViewAdapter;
+    private HotTopTicAdapter listViewAdapter;
     public MainActivityTopticCard(@NonNull Context context) {
         super(context);
     }
@@ -51,7 +51,7 @@ public class MainActivityTopticCard extends BaseCard {
     protected void getMaterial() {
         listview = (CursorListView) mView.findViewById(R.id.main_toptic_listview);
         list = new ArrayList<>();
-        listViewAdapter = new ListViewAdapter(list, mContext);
+        listViewAdapter = new HotTopTicAdapter(list, mContext);
         listview.setAdapter(listViewAdapter);
     }
 

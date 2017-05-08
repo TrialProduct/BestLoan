@@ -5,17 +5,17 @@
     android:padding="5dp">
 
     <ImageView
-        android:id="@+id/main_imgimg"
+        android:id="@+id/ivGoodTrick"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:scaleType="fitXY"
         android:src="@drawable/welcome_page_four" />
 
     <TextView
-        android:id="@+id/main_tvtitle"
+        android:id="@+id/mTvGoodTrickTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_imgimg"
+        android:layout_below="@id/ivGoodTrick"
         android:layout_margin="10dp"
         android:text="讲好英语的8个窍门"
         android:textColor="#000"
@@ -25,14 +25,14 @@
         android:id="@+id/main_tvtv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/main_tvtitle"
+        android:layout_below="@id/mTvGoodTrickTitle"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:text="by"
         android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/main_tvname"
+        android:id="@+id/mTvGoodTrickName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/main_tvtv1"
@@ -53,7 +53,7 @@
         android:background="#f0f0f0" />
 
     <TextView
-        android:id="@+id/main_tvtvpeple"
+        android:id="@+id/mTvGoodTrickPeple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/main_tvline"
