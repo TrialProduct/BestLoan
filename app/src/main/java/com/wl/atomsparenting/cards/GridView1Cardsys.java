@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class GridView1Cardsys extends BaseCard {
     private GridView mgv;
-    private Gridbaseadapter madapter;
+    private OptionAdapter madapter;
     private ArrayList<Griddomain> mlist;
     private int mimage[] = {
             R.drawable.story,
@@ -65,12 +65,9 @@ public class GridView1Cardsys extends BaseCard {
             Griddomain gd = new Griddomain(mimage[i], mstrname[i]);
             mlist.add(gd);
         }
-<<<<<<< HEAD:app/src/main/java/com/wl/atomsparenting/cards/GridView1Card.java
-        adapter = new OptionAdapter(list, mContext);
-        gridview.setAdapter(adapter);
-=======
-        madapter = new Gridbaseadapter(mlist, mContext);
+
+        madapter = new OptionAdapter(mlist, mContext);
         mgv.setAdapter(madapter);
->>>>>>> 0644114a8c4e536627331d3955b94957889c3856:app/src/main/java/com/wl/atomsparenting/cards/GridView1Cardsys.java
+
     }
 }
