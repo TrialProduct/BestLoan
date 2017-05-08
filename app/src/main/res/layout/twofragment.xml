@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--头部-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff999e">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ff999e"/>
+        <RadioGroup
+            android:id="@+id/two_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/two_rb1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:drawableBottom="@drawable/backgroundmyself"
+                android:gravity="center"
+                android:text="圈子"
+                android:textColor="#dbdbe3"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/two_rb2"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:button="@null"
+                android:drawableBottom="@drawable/backgroundmyself"
+                android:gravity="center"
+                android:text="活动"
+                android:textColor="#dbdbe3"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/two_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></RelativeLayout>
+</LinearLayout>
