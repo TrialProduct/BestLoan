@@ -2,7 +2,7 @@ package com.wl.atomsparenting.fragment;
 
 import com.wl.atomsparenting.adapter.BaseListBeanAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
-import com.wl.atomsparenting.beans.TwoFragmentActionBean;
+import com.wl.atomsparenting.beans.SecondFragmentActionBean;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ public class TwoFragmentAction extends BaseListFragment {
     @Override
     protected void sonStart() {
         beanArrayList = new ArrayList<>();
-        TwoFragmentActionBean twoFragmentBean = new TwoFragmentActionBean();
+        SecondFragmentActionBean twoFragmentBean = new SecondFragmentActionBean();
         beanArrayList.add(twoFragmentBean);
         fourFragmentAdapter = new BaseListBeanAdapter(beanArrayList, getContext());
         setadapter(fourFragmentAdapter);
