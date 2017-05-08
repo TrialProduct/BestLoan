@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.wl.atomsparenting.R;
 import com.wl.atomsparenting.adapter.ThreeListViewItem;
@@ -28,12 +27,12 @@ import java.util.ArrayList;
  */
 
 public class ThreeSmallClassCard extends BaseCard {
-    private String path = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
-    private ContentResolver resolver;
+    private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
+    private ContentResolver mresolver;
 
 
-    private CursorListView three_recyclerview;
-    private ArrayList<MicroBean> listrecyclerview;
+    private CursorListView mrvthird;
+    private ArrayList<MicroBean> mrvlist;
     private ThreeListViewItem tli;
 
     public ThreeSmallClassCard(@NonNull Context context) {
@@ -51,116 +50,21 @@ public class ThreeSmallClassCard extends BaseCard {
 
     @Override
     protected void getMaterial() {
-        three_recyclerview = (CursorListView) mView.findViewById(R.id.three_recyclerview);
-        listrecyclerview = new ArrayList<>();
-        tli = new ThreeListViewItem(listrecyclerview, mContext);
-        three_recyclerview.setAdapter(tli);
+        mrvthird = (CursorListView) mView.findViewById(R.id.three_recyclerview);
+        mrvlist = new ArrayList<>();
+        tli = new ThreeListViewItem(mrvlist, mContext);
+        mrvthird.setAdapter(tli);
     }
 
     @Override
     public void bindBean(BaseBean baseBean) {
 
-//        RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/MicroBean",//"http://169.254.214.59:8889",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.e("ThreeSmallClassCard",response);
-//
-//                        JSONArray jsonArray= null;
-//                        try {
-//                            listrecyclerview.clear();
-//                            jsonArray = new JSONArray(response);
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject jo=jsonArray.getJSONObject(i);
-//                                String strListPicUrl=jo.getString("strListPicUrl");
-//                                String strListTitle=jo.getString("strListTitle");
-//                                String strDate=jo.getString("strDate");
-//                                int intPrice=jo.getInt("intPrice");
-//                                int intAssess=jo.getInt("intAssess");
-//                                Log.e("MainActivitygongCard",strListPicUrl);
-//                                MicroBean microBean=new MicroBean(null,null,strListPicUrl,strListTitle,strDate,intPrice,intAssess);
-//                                listrecyclerview.add(microBean);
-//                            }
-//                            tli.notifyDataSetChanged();
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//
-//
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("GridView2Card", "onErrorResponse" + error.getMessage(), error);
-//                    }
-//                });
 
-//        mQueue.add(stringRequest);
-
-
-        resolver = getContext().getContentResolver();
-//        SharedPreferences share = getContext().getSharedPreferences("config6", Context.MODE_PRIVATE + Context.MODE_APPEND);
-//
-//        boolean b = share.getBoolean("is_first", true);
-//        if (b) {
-//            RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//            MyStringRequest stringRequest = new MyStringRequest("http://169.254.214.59:8889/MicroBean",//"http://169.254.214.59:8889",
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.e("MicroBean", response);
-//
-//                            ContentValues contentvalues = new ContentValues();
-//                            contentvalues.put(SQLiteColumn.JSONSTRING, response);
-//                            contentvalues.put(SQLiteColumn.RECORDTYPE, "MicroBean");
-//                            resolver.insert(Uri.parse(path), contentvalues);
-//                            JSONArray jsonArray = null;
-//                            try {
-//                                listrecyclerview.clear();
-//                                jsonArray = new JSONArray(response);
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//                                    JSONObject jo = jsonArray.getJSONObject(i);
-//                                    String strListPicUrl = jo.getString("strListPicUrl");
-//                                    String strListTitle = jo.getString("strListTitle");
-//                                    String strDate = jo.getString("strDate");
-//                                    int intPrice = jo.getInt("intPrice");
-//                                    int intAssess = jo.getInt("intAssess");
-//                                    Log.e("MicroBean", strListPicUrl);
-//                                    MicroBean microBean = new MicroBean(null, null, strListPicUrl, strListTitle, strDate, intPrice, intAssess);
-//                                    listrecyclerview.add(microBean);
-//                                }
-//                                tli.notifyDataSetChanged();
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("MicroBean", "onErrorResponse" + error.getMessage(), error);
-//                        }
-//                    });
-//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-//                    (int) MyStringRequest.SOCKET_TIMEOUT, 0,
-//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//            mQueue.add(stringRequest);
-   //         share.edit().putBoolean("is_first", false).commit();
-//        } else {
-
-
-
-
+        mresolver = getContext().getContentResolver();
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
-        Cursor cursor = resolver.query(Uri.parse(path), null, null, null, null);
+        Cursor cursor = mresolver.query(Uri.parse(mpath), null, null, null, null);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -179,7 +83,7 @@ public class ThreeSmallClassCard extends BaseCard {
 
                     JSONArray jsonArray = null;
                     try {
-                        listrecyclerview.clear();
+                        mrvlist.clear();
                         jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jo = jsonArray.getJSONObject(i);
@@ -190,7 +94,7 @@ public class ThreeSmallClassCard extends BaseCard {
                             int intAssess = jo.getInt("intAssess");
 
                             MicroBean microBean = new MicroBean(null, null, strListPicUrl, strListTitle, strDate, intPrice, intAssess);
-                            listrecyclerview.add(microBean);
+                            mrvlist.add(microBean);
                         }
                         tli.notifyDataSetChanged();
 
@@ -204,7 +108,6 @@ public class ThreeSmallClassCard extends BaseCard {
 
 
         }
-
 
 
     }

@@ -27,11 +27,11 @@ import java.util.ArrayList;
  */
 
 public class TwoFragmentCircleCard extends BaseCard {
-    private String path = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
-    private ContentResolver resolver;
+    private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
+    private ContentResolver mresolver;
 
-    private CursorListView listview;
-    private ArrayList<CircleBean> list;
+    private CursorListView mlv;
+    private ArrayList<CircleBean> mlist;
     private TwoFragment_circle_ListAdapter tql;
 
     public TwoFragmentCircleCard(@NonNull Context context) {
@@ -49,126 +49,25 @@ public class TwoFragmentCircleCard extends BaseCard {
 
     @Override
     protected void getMaterial() {
-        listview = (CursorListView) mView.findViewById(R.id.twofragment_circle_listview);
-        list = new ArrayList<>();
-        tql = new TwoFragment_circle_ListAdapter(list, mContext);
-        listview.setAdapter(tql);
+        mlv = (CursorListView) mView.findViewById(R.id.twofragment_circle_listview);
+        mlist = new ArrayList<>();
+        tql = new TwoFragment_circle_ListAdapter(mlist, mContext);
+        mlv.setAdapter(tql);
 
     }
 
     @Override
     public void bindBean(BaseBean baseBean) {
 
-//        RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/CircleBean",//"http://169.254.214.59:8889",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.e("TwoFragmentCircleCard",response);
-//                        try {
-//                            list.clear();
-//                            JSONArray jsonArray=new JSONArray(response);
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject jo=jsonArray.getJSONObject(i);
-//                                String strListPicUrl=jo.getString("strListPicUrl");
-//                                String strListTitle=jo.getString("strListTitle");
-//                                String strListIntroduce=jo.getString("strListIntroduce");
-//                                int intListPosts=jo.getInt("intListPosts");
-//                                CircleBean circleBean=new CircleBean(strListPicUrl,strListTitle,intListPosts,strListIntroduce);
-//                                list.add(circleBean);
-//                            }
-//
-//                            tql.notifyDataSetChanged();
-//
-//                        }
-//                        catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("TwoFragmentCircleCard", "onErrorResponse" + error.getMessage(), error);
-//                    }
-//                });
-//
-//        mQueue.add(stringRequest);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        resolver = getContext().getContentResolver();
-//        SharedPreferences share = getContext().getSharedPreferences("config7", Context.MODE_PRIVATE + Context.MODE_APPEND);
-//
-//        boolean b = share.getBoolean("is_first", true);
-//        if (b) {
-//            RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//            MyStringRequest stringRequest = new MyStringRequest("http://169.254.214.59:8889/CircleBean",//"http://169.254.214.59:8889",
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.e("CircleBean", response);
-//
-//                            ContentValues contentvalues = new ContentValues();
-//                            contentvalues.put(SQLiteColumn.JSONSTRING, response);
-//                            contentvalues.put(SQLiteColumn.RECORDTYPE, "CircleBean");
-//                            resolver.insert(Uri.parse(path), contentvalues);
-//                            JSONArray jsonArray = null;
-//                            try {
-//                                list.clear();
-//                                jsonArray = new JSONArray(response);
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//                                    JSONObject jo=jsonArray.getJSONObject(i);
-//                                    String strListPicUrl=jo.getString("strListPicUrl");
-//                                    String strListTitle=jo.getString("strListTitle");
-//                                    String strListIntroduce=jo.getString("strListIntroduce");
-//                                    int intListPosts=jo.getInt("intListPosts");
-//                                    CircleBean circleBean=new CircleBean(strListPicUrl,strListTitle,intListPosts,strListIntroduce);
-//                                    list.add(circleBean);
-//                                }
-//
-//                                tql.notifyDataSetChanged();
-//
-//                            }
-//                            catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("CircleBean", "onErrorResponse" + error.getMessage(), error);
-//                        }
-//                    });
-//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-//                    (int) MyStringRequest.SOCKET_TIMEOUT, 0,
-//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//            mQueue.add(stringRequest);
-          //  share.edit().putBoolean("is_first", false).commit();
-//        } else {
-
-
+        mresolver = getContext().getContentResolver();
 
 
 
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
-        Cursor cursor = resolver.query(Uri.parse(path), null, null, null, null);
+        Cursor cursor = mresolver.query(Uri.parse(mpath), null, null, null, null);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -187,7 +86,7 @@ public class TwoFragmentCircleCard extends BaseCard {
 
                     JSONArray jsonArray = null;
                     try {
-                        list.clear();
+                        mlist.clear();
                         jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jo=jsonArray.getJSONObject(i);
@@ -196,7 +95,7 @@ public class TwoFragmentCircleCard extends BaseCard {
                             String strListIntroduce=jo.getString("strListIntroduce");
                             int intListPosts=jo.getInt("intListPosts");
                             CircleBean circleBean=new CircleBean(strListPicUrl,strListTitle,intListPosts,strListIntroduce);
-                            list.add(circleBean);
+                            mlist.add(circleBean);
                         }
 
                         tql.notifyDataSetChanged();

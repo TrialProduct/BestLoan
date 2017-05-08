@@ -27,15 +27,13 @@ import java.util.ArrayList;
  */
 
 public class TarentoCard extends BaseCard {
-    private String path = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
-    private ContentResolver resolver;
+    private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
+    private ContentResolver mresolver;
 
 
 
-
-
-    RoundCornerImageView main_img_views;
-    TextView main_tv_name,main_tv_introduce;
+    RoundCornerImageView mimg;
+    TextView mtvname, mtvintroduce;
     public TarentoCard(@NonNull Context context) {
         super(context);
     }
@@ -51,119 +49,21 @@ public class TarentoCard extends BaseCard {
 
     @Override
     protected void getMaterial() {
-        main_img_views= (RoundCornerImageView) mView.findViewById(R.id.main_img_views);
-        main_tv_name= (TextView) mView.findViewById(R.id.main_tv_name);
-        main_tv_introduce= (TextView) mView.findViewById(R.id.main_tv_introduce);
+        mimg = (RoundCornerImageView) mView.findViewById(R.id.main_img_views);
+        mtvname = (TextView) mView.findViewById(R.id.main_tv_name);
+        mtvintroduce = (TextView) mView.findViewById(R.id.main_tv_introduce);
 
     }
 
     @Override
     public void bindBean(BaseBean baseBean) {
 
-//        RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/SuperManBean",//"http://169.254.214.59:8889",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.e("TarentoCard",response);
-//                        try {
-//                            JSONObject jo=new JSONObject(response);
-//                            String strHeadPicUrl=jo.getString("strHeadPicUrl");
-//                            String strName=jo.getString("strName");
-//                            String strIntroduce=jo.getString("strIntroduce");
-//
-//                            main_tv_name.setText(strName);
-//                            main_tv_introduce.setText(strIntroduce);
-//                            Picasso.with(getContext())
-//                                    .load(strHeadPicUrl)
-//                                    .config(Bitmap.Config.RGB_565)
-//                                    .fit().centerCrop()
-//                                    .into(main_img_views);
-//                        }
-//                        catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("TarentoCard", "onErrorResponse" + error.getMessage(), error);
-//                    }
-//                });
-//
-//        mQueue.add(stringRequest);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        resolver = getContext().getContentResolver();
-//        SharedPreferences share = getContext().getSharedPreferences("config4", Context.MODE_PRIVATE + Context.MODE_APPEND);
-//
-//        boolean b = share.getBoolean("is_first", true);
-//        if (b) {
-//            RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//            MyStringRequest stringRequest = new MyStringRequest("http://169.254.214.59:8889/SuperManBean",//"http://169.254.214.59:8889",
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.e("SuperManBean",response);
-//
-//                            ContentValues contentvalues = new ContentValues();
-//                            contentvalues.put(SQLiteColumn.JSONSTRING,response);
-//                            contentvalues.put(SQLiteColumn.RECORDTYPE,"SuperManBean");
-//                            resolver.insert(Uri.parse(path),contentvalues);
-//                            try {
-//                                JSONObject jo=new JSONObject(response);
-//                                String strHeadPicUrl=jo.getString("strHeadPicUrl");
-//                                String strName=jo.getString("strName");
-//                                String strIntroduce=jo.getString("strIntroduce");
-//
-//                                main_tv_name.setText(strName);
-//                                main_tv_introduce.setText(strIntroduce);
-//                                Picasso.with(getContext())
-//                                        .load(strHeadPicUrl)
-//                                        .config(Bitmap.Config.RGB_565)
-//                                        .fit().centerCrop()
-//                                        .into(main_img_views);
-//                            }
-//                            catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("SuperManBean", "onErrorResponse" + error.getMessage(), error);
-//                        }
-//                    });
-//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-//                    (int) MyStringRequest.SOCKET_TIMEOUT, 0,
-//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//            mQueue.add(stringRequest);
-     //       share.edit().putBoolean("is_first", false).commit();
-//        }else {
-
-
-
-
-
+        mresolver = getContext().getContentResolver();
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
-        Cursor cursor = resolver.query(Uri.parse(path),null,null,null,null);
+        Cursor cursor = mresolver.query(Uri.parse(mpath),null,null,null,null);
 
         if (cursor!=null) {
             while (cursor.moveToNext()){
@@ -186,13 +86,13 @@ public class TarentoCard extends BaseCard {
                         String strName=jo.getString("strName");
                         String strIntroduce=jo.getString("strIntroduce");
 
-                        main_tv_name.setText(strName);
-                        main_tv_introduce.setText(strIntroduce);
+                        mtvname.setText(strName);
+                        mtvintroduce.setText(strIntroduce);
                         Picasso.with(getContext())
                                 .load(strHeadPicUrl)
                                 .config(Bitmap.Config.RGB_565)
                                 .fit().centerCrop()
-                                .into(main_img_views);
+                                .into(mimg);
                     }
                     catch (JSONException e) {
                         e.printStackTrace();
@@ -201,11 +101,6 @@ public class TarentoCard extends BaseCard {
 
             }
         }
-
-
-
-
-
 
 
 
