@@ -22,9 +22,9 @@ import com.wl.atomsparenting.cards.MainActivityTopticCard;
 import com.wl.atomsparenting.cards.RollPagerView2Card;
 import com.wl.atomsparenting.cards.RollPagerViewCard;
 import com.wl.atomsparenting.cards.TarentoCard;
-import com.wl.atomsparenting.cards.ThreeSmallClassCard;
-import com.wl.atomsparenting.cards.TwoFragmentActionCard;
-import com.wl.atomsparenting.cards.TwoFragmentCircleCard;
+import com.wl.atomsparenting.cards.ThirdSmallClassCard;
+import com.wl.atomsparenting.cards.SecondFragmentActionCard;
+import com.wl.atomsparenting.cards.SecondFragmentCircleCard;
 
 import java.util.ArrayList;
 
@@ -56,11 +56,11 @@ public class FourFragmentAdapter extends RecyclerView.Adapter<FourFragmentAdapte
         } else if (viewType == MainActivityTopticBean.class.getCanonicalName().hashCode()) {
             view = new MainActivityTopticCard(context);
         } else if (viewType == TwoFragmentCircleBean.class.getCanonicalName().hashCode()) {
-            view = new TwoFragmentCircleCard(context);
+            view = new SecondFragmentCircleCard(context);
         } else if (viewType == TwoFragmentActionBean.class.getCanonicalName().hashCode()) {
-            view = new TwoFragmentActionCard(context);
+            view = new SecondFragmentActionCard(context);
         } else if (viewType == ThreeSmallClassBean.class.getCanonicalName().hashCode()) {
-            view = new ThreeSmallClassCard(context);
+            view = new ThirdSmallClassCard(context);
         } else if (viewType == RollPagerView2Bean.class.getCanonicalName().hashCode()) {
             view = new RollPagerView2Card(context);
         }

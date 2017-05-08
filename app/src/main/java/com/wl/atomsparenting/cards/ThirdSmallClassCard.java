@@ -9,11 +9,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.TwoFragment_circle_ListAdapter;
+import com.wl.atomsparenting.adapter.ThreeListViewItem;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
-import com.wl.atomsparenting.domain.CircleBean;
+import com.wl.atomsparenting.domain.MicroBean;
 import com.wl.atomsparenting.views.CursorListView;
 
 import org.json.JSONArray;
@@ -26,34 +26,34 @@ import java.util.ArrayList;
  * Created by le on 2017/4/17.
  */
 
-public class TwoFragmentCircleCard extends BaseCard {
+public class ThirdSmallClassCard extends BaseCard {
     private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
     private ContentResolver mresolver;
 
-    private CursorListView mlv;
-    private ArrayList<CircleBean> mlist;
-    private TwoFragment_circle_ListAdapter tql;
 
-    public TwoFragmentCircleCard(@NonNull Context context) {
+    private CursorListView mrvthird;
+    private ArrayList<MicroBean> mrvlist;
+    private ThreeListViewItem tli;
+
+    public ThirdSmallClassCard(@NonNull Context context) {
         super(context);
     }
 
-    public TwoFragmentCircleCard(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public ThirdSmallClassCard(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     protected int getFindView() {
-        return R.layout.twofragment_circle;
+        return R.layout.threefragmentcursorlistview;
     }
 
     @Override
     protected void getMaterial() {
-        mlv = (CursorListView) mView.findViewById(R.id.twofragment_circle_listview);
-        mlist = new ArrayList<>();
-        tql = new TwoFragment_circle_ListAdapter(mlist, mContext);
-        mlv.setAdapter(tql);
-
+        mrvthird = (CursorListView) mView.findViewById(R.id.three_recyclerview);
+        mrvlist = new ArrayList<>();
+        tli = new ThreeListViewItem(mrvlist, mContext);
+        mrvthird.setAdapter(tli);
     }
 
     @Override
@@ -61,9 +61,6 @@ public class TwoFragmentCircleCard extends BaseCard {
 
 
         mresolver = getContext().getContentResolver();
-
-
-
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
@@ -82,26 +79,26 @@ public class TwoFragmentCircleCard extends BaseCard {
 
             for (int j = 0; j < dataArrayList.size(); j++) {
 
-                if (dataArrayList.get(j).getRecordType().equals("circleBeen")) {
+                if (dataArrayList.get(j).getRecordType().equals("microBeen")) {
 
                     JSONArray jsonArray = null;
                     try {
-                        mlist.clear();
+                        mrvlist.clear();
                         jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jo=jsonArray.getJSONObject(i);
-                            String strListPicUrl=jo.getString("strListPicUrl");
-                            String strListTitle=jo.getString("strListTitle");
-                            String strListIntroduce=jo.getString("strListIntroduce");
-                            int intListPosts=jo.getInt("intListPosts");
-                            CircleBean circleBean=new CircleBean(strListPicUrl,strListTitle,intListPosts,strListIntroduce);
-                            mlist.add(circleBean);
+                            JSONObject jo = jsonArray.getJSONObject(i);
+                            String strListPicUrl = jo.getString("strListPicUrl");
+                            String strListTitle = jo.getString("strListTitle");
+                            String strDate = jo.getString("strDate");
+                            int intPrice = jo.getInt("intPrice");
+                            int intAssess = jo.getInt("intAssess");
+
+                            MicroBean microBean = new MicroBean(null, null, strListPicUrl, strListTitle, strDate, intPrice, intAssess);
+                            mrvlist.add(microBean);
                         }
+                        tli.notifyDataSetChanged();
 
-                        tql.notifyDataSetChanged();
-
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
@@ -113,10 +110,5 @@ public class TwoFragmentCircleCard extends BaseCard {
         }
 
 
-
-
-
-
     }
-
 }
