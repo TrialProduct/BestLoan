@@ -19,12 +19,12 @@ import java.util.ArrayList;
  * Created by le on 2017/4/14.
  */
 
-public class TwoFragment_circle_ListAdapter extends BaseAdapter {
+public class SecondFragment_circle_ListAdapter extends BaseAdapter {
     private ArrayList<CircleBean> list;
     private Context context;
     private LayoutInflater inflater;
 
-    public TwoFragment_circle_ListAdapter(ArrayList<CircleBean> list, Context context) {
+    public SecondFragment_circle_ListAdapter(ArrayList<CircleBean> list, Context context) {
         this.list = list;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -47,8 +47,11 @@ public class TwoFragment_circle_ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
         ViewHolder vh = null;
+
         if (view == null) {
+
             vh = new ViewHolder();
             view = inflater.inflate(R.layout.circleitem, null);
             vh.circle_roundCornerImageView = (ImageView) view.findViewById(R.id.circle_roundCornerImageView);
@@ -56,7 +59,9 @@ public class TwoFragment_circle_ListAdapter extends BaseAdapter {
             vh.circleposts= (TextView) view.findViewById(R.id.circleposts);
             vh.circleintroduce= (TextView) view.findViewById(R.id.circleintroduce);
             view.setTag(vh);
+
         } else {
+
             vh = (ViewHolder) view.getTag();
         }
         CircleBean circleBean=list.get(i);

@@ -15,12 +15,12 @@ import java.util.ArrayList;
  * Created by le on 2017/4/14.
  */
 
-public class ThreeFragmentRecyclerView extends RecyclerView.Adapter<ThreeFragmentRecyclerView.ViewHolder> {
+public class ThirdFragmentRecyclerView extends RecyclerView.Adapter<ThirdFragmentRecyclerView.ViewHolder> {
     private ArrayList<Integer> list;
     private Context context;
     private LayoutInflater inflater;
 
-    public ThreeFragmentRecyclerView(ArrayList<Integer> list, Context context) {
+    public ThirdFragmentRecyclerView(ArrayList<Integer> list, Context context) {
         this.list = list;
         this.context = context;
         inflater = LayoutInflater.from(context);
@@ -28,13 +28,13 @@ public class ThreeFragmentRecyclerView extends RecyclerView.Adapter<ThreeFragmen
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.three_recyclerview_item, null);
+        View view = inflater.inflate(R.layout.thrid_recyclerview_item, null);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.three_item_img.setImageResource(list.get(position));
+        holder.thrid_item_img.setImageResource(list.get(position));
     }
 
     @Override
@@ -43,11 +43,11 @@ public class ThreeFragmentRecyclerView extends RecyclerView.Adapter<ThreeFragmen
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView three_item_img;
+        ImageView thrid_item_img;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            three_item_img = (ImageView) itemView.findViewById(R.id.three_item_img);
+            thrid_item_img = (ImageView) itemView.findViewById(R.id.thrid_item_img);
         }
     }
 }
