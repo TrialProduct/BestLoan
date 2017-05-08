@@ -17,25 +17,25 @@ import java.util.ArrayList;
  * Created by le on 2017/4/8.
  */
 
-public class Gridbaseadapter extends BaseAdapter {
-    private ArrayList<Griddomain> list;
+public class OptionAdapter extends BaseAdapter {
+    private ArrayList<Griddomain> mArrayList;
     private LayoutInflater inflater;
-    private Context context;
+    private Context mContext;
 
-    public Gridbaseadapter(ArrayList<Griddomain> list, Context context) {
-        this.list = list;
-        this.context = context;
-        inflater = LayoutInflater.from(context);
+    public OptionAdapter(ArrayList<Griddomain> mArrayList, Context mContext) {
+        this.mArrayList = mArrayList;
+        this.mContext = mContext;
+        inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return mArrayList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return list.get(i);
+        return mArrayList.get(i);
     }
 
     @Override
@@ -45,24 +45,34 @@ public class Gridbaseadapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        
         ViewHoder vh = null;
+        
         if (view == null) {
+            
             vh = new ViewHoder();
-            view = inflater.inflate(R.layout.main_gridview, null);
-            vh.main_gridview_img = (ImageView) view.findViewById(R.id.main_gridview_img);
-            vh.main_gridview_tv = (TextView) view.findViewById(R.id.main_gridview_tv);
+            
+            view = inflater.inflate(R.layout.mainoption, null);
+            vh.ivOption = (ImageView) view.findViewById(R.id.ivOption);
+            vh.mTvOptionTitle = (TextView) view.findViewById(R.id.mTvOptionTitle);
+            
             view.setTag(vh);
+            
         } else {
+            
             vh = (ViewHoder) view.getTag();
+            
         }
-        Griddomain gd = list.get(i);
-        vh.main_gridview_img.setImageResource(gd.getImg());
-        vh.main_gridview_tv.setText(gd.getName());
+        
+        Griddomain gd = mArrayList.get(i);
+        vh.ivOption.setImageResource(gd.getImg());
+        vh.mTvOptionTitle.setText(gd.getName());
+        
         return view;
     }
 
     class ViewHoder {
-        ImageView main_gridview_img;
-        TextView main_gridview_tv;
+        ImageView ivOption;
+        TextView mTvOptionTitle;
     }
 }

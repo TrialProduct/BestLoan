@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.GridGoodTrickbaseadapter;
+import com.wl.atomsparenting.adapter.GoodTrickAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
@@ -32,9 +32,15 @@ public class GridView2Card extends BaseCard {
     private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
     private ContentResolver mresolver;
 
+<<<<<<< HEAD
+    private ArrayList<GriddoGoodTrick> listgoodtrick;
+    private HeaderGridView recyclerview;
+    private GoodTrickAdapter gridbaseadapter;
+=======
     private ArrayList<GriddoGoodTrick> mlistgoodtrick;
     private HeaderGridView mrecyclerview;
     private GridGoodTrickbaseadapter mgridbaseadapter;
+>>>>>>> 0644114a8c4e536627331d3955b94957889c3856
 
     public GridView2Card(@NonNull Context context) {
         super(context);
@@ -58,9 +64,15 @@ public class GridView2Card extends BaseCard {
 
             }
         });
+<<<<<<< HEAD
+        listgoodtrick = new ArrayList<>();
+        gridbaseadapter = new GoodTrickAdapter(listgoodtrick, mContext);
+        recyclerview.setAdapter(gridbaseadapter);
+=======
         mlistgoodtrick = new ArrayList<>();
         mgridbaseadapter = new GridGoodTrickbaseadapter(mlistgoodtrick, mContext);
         mrecyclerview.setAdapter(mgridbaseadapter);
+>>>>>>> 0644114a8c4e536627331d3955b94957889c3856
     }
 
     @Override

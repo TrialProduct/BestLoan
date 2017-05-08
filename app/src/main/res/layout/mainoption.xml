@@ -9,7 +9,7 @@
     >
 
     <ImageView
-        android:id="@+id/main_gridview_img"
+        android:id="@+id/ivOption"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="22dp"
@@ -17,7 +17,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/main_gridview_tv"
+        android:id="@+id/mTvOptionTitle"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
