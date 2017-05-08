@@ -9,7 +9,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.ThreeListViewItem;
+
+import com.wl.atomsparenting.adapter.ThridListViewItem;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
@@ -33,7 +34,7 @@ public class ThirdSmallClassCard extends BaseCard {
 
     private CursorListView mrvthird;
     private ArrayList<MicroBean> mrvlist;
-    private ThreeListViewItem tli;
+    private ThridListViewItem tli;
 
     public ThirdSmallClassCard(@NonNull Context context) {
         super(context);
@@ -52,7 +53,7 @@ public class ThirdSmallClassCard extends BaseCard {
     protected void getMaterial() {
         mrvthird = (CursorListView) mView.findViewById(R.id.three_recyclerview);
         mrvlist = new ArrayList<>();
-        tli = new ThreeListViewItem(mrvlist, mContext);
+        tli = new ThridListViewItem(mrvlist, mContext);
         mrvthird.setAdapter(tli);
     }
 

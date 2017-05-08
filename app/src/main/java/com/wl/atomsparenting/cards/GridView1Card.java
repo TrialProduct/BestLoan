@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 
 
-public class GridView1Cardsys extends BaseCard {
+public class GridView1Card extends BaseCard {
     private GridView mgv;
     private OptionAdapter madapter;
     private ArrayList<Griddomain> mlist;
@@ -38,11 +38,11 @@ public class GridView1Cardsys extends BaseCard {
             "故事", "健康", "英文", "心理", "手工", "自然", "艺术", "乐途", "美食", "更多"
     };
 
-    public GridView1Cardsys(@NonNull Context context) {
+    public GridView1Card(@NonNull Context context) {
         super(context);
     }
 
-    public GridView1Cardsys(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public GridView1Card(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
