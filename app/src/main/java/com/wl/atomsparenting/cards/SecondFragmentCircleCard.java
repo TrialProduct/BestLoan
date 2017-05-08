@@ -9,11 +9,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.ListViewAdapter;
+import com.wl.atomsparenting.adapter.TwoFragment_circle_ListAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
-import com.wl.atomsparenting.domain.HotTopticBean;
+import com.wl.atomsparenting.domain.CircleBean;
 import com.wl.atomsparenting.views.CursorListView;
 
 import org.json.JSONArray;
@@ -22,40 +22,38 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static android.R.id.list;
-import static com.wl.atomsparenting.contentprovider.SqliteReadDataUtil.path;
-
 /**
  * Created by le on 2017/4/17.
  */
 
-public class MainActivityTopticCard extends BaseCard {
+public class SecondFragmentCircleCard extends BaseCard {
     private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
     private ContentResolver mresolver;
 
+    private CursorListView mlv;
+    private ArrayList<CircleBean> mlist;
+    private TwoFragment_circle_ListAdapter tql;
 
-    private CursorListView mlistview;
-    private ArrayList<HotTopticBean> mlist;
-    private ListViewAdapter mlistViewAdapter;
-    public MainActivityTopticCard(@NonNull Context context) {
+    public SecondFragmentCircleCard(@NonNull Context context) {
         super(context);
     }
 
-    public MainActivityTopticCard(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public SecondFragmentCircleCard(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     protected int getFindView() {
-        return R.layout.mainactivity_toptic;
+        return R.layout.twofragment_circle;
     }
 
     @Override
     protected void getMaterial() {
-        mlistview = (CursorListView) mView.findViewById(R.id.main_toptic_listview);
+        mlv = (CursorListView) mView.findViewById(R.id.twofragment_circle_listview);
         mlist = new ArrayList<>();
-        mlistViewAdapter = new ListViewAdapter(mlist, mContext);
-        mlistview.setAdapter(mlistViewAdapter);
+        tql = new TwoFragment_circle_ListAdapter(mlist, mContext);
+        mlv.setAdapter(tql);
+
     }
 
     @Override
@@ -63,6 +61,8 @@ public class MainActivityTopticCard extends BaseCard {
 
 
         mresolver = getContext().getContentResolver();
+
+
 
 
 
@@ -82,25 +82,26 @@ public class MainActivityTopticCard extends BaseCard {
 
             for (int j = 0; j < dataArrayList.size(); j++) {
 
-                if (dataArrayList.get(j).getRecordType().equals("hotTopticBeen")) {
+                if (dataArrayList.get(j).getRecordType().equals("circleBeen")) {
 
+                    JSONArray jsonArray = null;
                     try {
                         mlist.clear();
-                        JSONArray jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
+                        jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jo=jsonArray.getJSONObject(i);
-                            String strBackPicUrl=jo.getString("strBackPicUrl");
-                            String strIntroduce=jo.getString("strIntroduce");
-                            int intAssess=jo.getInt("intAssess");
-                            int intLike=jo.getInt("intLike");
-
-                            HotTopticBean hotTopticBean=new HotTopticBean(null,strBackPicUrl,intAssess,intLike,strIntroduce);
-                            mlist.add(hotTopticBean);
-
+                            String strListPicUrl=jo.getString("strListPicUrl");
+                            String strListTitle=jo.getString("strListTitle");
+                            String strListIntroduce=jo.getString("strListIntroduce");
+                            int intListPosts=jo.getInt("intListPosts");
+                            CircleBean circleBean=new CircleBean(strListPicUrl,strListTitle,intListPosts,strListIntroduce);
+                            mlist.add(circleBean);
                         }
-                        mlistViewAdapter.notifyDataSetChanged();
 
-                    } catch (JSONException e) {
+                        tql.notifyDataSetChanged();
+
+                    }
+                    catch (JSONException e) {
                         e.printStackTrace();
                     }
 
@@ -115,7 +116,7 @@ public class MainActivityTopticCard extends BaseCard {
 
 
 
-    }
 
+    }
 
 }

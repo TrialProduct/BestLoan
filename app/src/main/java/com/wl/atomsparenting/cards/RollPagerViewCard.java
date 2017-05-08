@@ -32,12 +32,12 @@ import java.util.ArrayList;
  */
 
 public class RollPagerViewCard extends BaseCard {
-    private String path = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
-    private ContentResolver resolver;
+    private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
+    private ContentResolver mresolver;
 
-    private RollPagerView rollPV = null;
-    private ArrayList<String> listRollpager;
-    private RollPagerAdapter roll;
+    private RollPagerView mrollPV = null;
+    private ArrayList<String> mlistRollpager;
+    private RollPagerAdapter mroll;
     public RollPagerViewCard(@NonNull Context context) {
         super(context);
     }
@@ -54,15 +54,15 @@ public class RollPagerViewCard extends BaseCard {
     @Override
     protected void getMaterial() {
         //轮播
-        rollPV = (RollPagerView) mView.findViewById(R.id.goodtrick_rollPV);
+        mrollPV = (RollPagerView) mView.findViewById(R.id.goodtrick_rollPV);
         //设置每个图片的切换时间
-        rollPV.setPlayDelay(3000);
+        mrollPV.setPlayDelay(3000);
         //设置图片切换动画时间
-        rollPV.setAnimationDurtion(500);
+        mrollPV.setAnimationDurtion(500);
         //设置指示器:
         //rollPV.setHintView(new IconHintView());
         //rollPV.setHintView(new IconHintView(this,R.mipmap.ic_launcher,R.mipmap.ic_launcher));
-        rollPV.setHintView(new ColorPointHintView(mContext, getResources().getColor(R.color.colorrollpagerView), R.color.colorView));
+        mrollPV.setHintView(new ColorPointHintView(mContext, getResources().getColor(R.color.colorrollpagerView), R.color.colorView));
 
         //设置每一个图片的点击事件
 //        rollPV.setOnItemClickListener(new OnItemClickListener() {
@@ -73,124 +73,21 @@ public class RollPagerViewCard extends BaseCard {
 //            }
 //        });
         //设置适配器
-        listRollpager=new ArrayList<>();
-        roll=new RollPagerAdapter(listRollpager);
-        rollPV.setAdapter(roll);
+        mlistRollpager=new ArrayList<>();
+        mroll=new RollPagerAdapter(mlistRollpager);
+        mrollPV.setAdapter(mroll);
     }
 
     @Override
     public void bindBean(BaseBean baseBean) {
 
-//        RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/MainRollpagerBean",//"http://169.254.214.59:8889",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.e("RollPagerViewCard",response);
-//                        try {
-//                            listRollpager.clear();
-//                            JSONArray jsonArray=new JSONArray(response);
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject jo=jsonArray.getJSONObject(i);
-//                                String strPicUrl=jo.getString("strPicUrl");
-//                                listRollpager.add(strPicUrl);
-//
-//                            }
-//                            roll.notifyDataSetChanged();
-//
-//                        }
-//                        catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("RollPagerViewCard", "onErrorResponse" + error.getMessage(), error);
-//                    }
-//                });
-//
-//        mQueue.add(stringRequest);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        resolver = getContext().getContentResolver();
-//        SharedPreferences share = getContext().getSharedPreferences("config3", Context.MODE_PRIVATE + Context.MODE_APPEND);
-//
-//        boolean b = share.getBoolean("is_first", true);
-//        if (b) {
-//            RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//            MyStringRequest stringRequest = new MyStringRequest("http://169.254.214.59:8889/MainRollpagerBean",//"http://169.254.214.59:8889",
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.e("MainRollpagerBean",response);
-//
-//                            ContentValues contentvalues = new ContentValues();
-//                            contentvalues.put(SQLiteColumn.JSONSTRING,response);
-//                            contentvalues.put(SQLiteColumn.RECORDTYPE,"MainRollpagerBean");
-//                            resolver.insert(Uri.parse(path),contentvalues);
-//                            try {
-//                                listRollpager.clear();
-//                                JSONArray jsonArray=new JSONArray(response);
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//                                    JSONObject jo=jsonArray.getJSONObject(i);
-//                                    String strPicUrl=jo.getString("strPicUrl");
-//                                    listRollpager.add(strPicUrl);
-//
-//                                }
-//                                roll.notifyDataSetChanged();
-//
-//                            }
-//                            catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("MainRollpagerBean", "onErrorResponse" + error.getMessage(), error);
-//                        }
-//                    });
-//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-//                    (int) MyStringRequest.SOCKET_TIMEOUT, 0,
-//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//            mQueue.add(stringRequest);
-        //    share.edit().putBoolean("is_first", false).commit();
-//        }else {
-
-
+        mresolver = getContext().getContentResolver();
 
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
-        Cursor cursor = resolver.query(Uri.parse(path), null, null, null, null);
+        Cursor cursor = mresolver.query(Uri.parse(mpath), null, null, null, null);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -208,15 +105,15 @@ public class RollPagerViewCard extends BaseCard {
                 if (dataArrayList.get(j).getRecordType().equals("mainRollpagerBeen")) {
 
                     try {
-                        listRollpager.clear();
+                        mlistRollpager.clear();
                         JSONArray jsonArray=new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jo=jsonArray.getJSONObject(i);
                             String strPicUrl=jo.getString("strPicUrl");
-                            listRollpager.add(strPicUrl);
+                            mlistRollpager.add(strPicUrl);
 
                         }
-                        roll.notifyDataSetChanged();
+                        mroll.notifyDataSetChanged();
 
                     }
                     catch (JSONException e) {
@@ -229,9 +126,6 @@ public class RollPagerViewCard extends BaseCard {
 
 
         }
-
-
-
 
 
 

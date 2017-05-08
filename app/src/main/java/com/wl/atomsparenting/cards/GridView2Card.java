@@ -29,12 +29,12 @@ import java.util.ArrayList;
  */
 
 public class GridView2Card extends BaseCard {
-    private String path = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
-    private ContentResolver resolver;
+    private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
+    private ContentResolver mresolver;
 
-    private ArrayList<GriddoGoodTrick> listgoodtrick;
-    private HeaderGridView recyclerview;
-    private GridGoodTrickbaseadapter gridbaseadapter;
+    private ArrayList<GriddoGoodTrick> mlistgoodtrick;
+    private HeaderGridView mrecyclerview;
+    private GridGoodTrickbaseadapter mgridbaseadapter;
 
     public GridView2Card(@NonNull Context context) {
         super(context);
@@ -51,16 +51,16 @@ public class GridView2Card extends BaseCard {
 
     @Override
     protected void getMaterial() {
-        recyclerview = (HeaderGridView) mView.findViewById(R.id.main_goodtrick_recyclerview);
-        recyclerview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mrecyclerview = (HeaderGridView) mView.findViewById(R.id.main_goodtrick_recyclerview);
+        mrecyclerview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
             }
         });
-        listgoodtrick = new ArrayList<>();
-        gridbaseadapter = new GridGoodTrickbaseadapter(listgoodtrick, mContext);
-        recyclerview.setAdapter(gridbaseadapter);
+        mlistgoodtrick = new ArrayList<>();
+        mgridbaseadapter = new GridGoodTrickbaseadapter(mlistgoodtrick, mContext);
+        mrecyclerview.setAdapter(mgridbaseadapter);
     }
 
     @Override
@@ -71,97 +71,18 @@ public class GridView2Card extends BaseCard {
     private void initrecyclerview() {
 
 
-        shujuyuan();
+        getdata();
     }
 
-    private void shujuyuan() {
-//        RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//        MyStringRequest stringRequest = new MyStringRequest("http://192.168.23.1:8889/HotCoupBean",//"http://169.254.214.59:8889",
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.e("GridView2Card",response);
-//                        try {
-//                            listgoodtrick.clear();
-//                            JSONArray jsonArray=new JSONArray(response);
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject jo=jsonArray.getJSONObject(i);
-//                                String strPicUrl=jo.getString("strPicUrl");
-//                                String strTitle=jo.getString("strTitle");
-//                                String strAuthor=jo.getString("strAuthor");
-//                                int intLike=jo.getInt("intLike");
-//                                GriddoGoodTrick griddomaiozhao=new GriddoGoodTrick(strPicUrl,strTitle,intLike,strAuthor);
-//                                listgoodtrick.add(griddomaiozhao);
-//
-//                            }
-//                            gridbaseadapter.notifyDataSetChanged();
-//                        }
-//                        catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.e("GridView2Card", "onErrorResponse" + error.getMessage(), error);
-//                    }
-//                });
-//
-//        mQueue.add(stringRequest);
+    private void getdata() {
 
-        resolver = getContext().getContentResolver();
-//        SharedPreferences share = getContext().getSharedPreferences("config1", Context.MODE_PRIVATE + Context.MODE_APPEND);
-//
-//        boolean b = share.getBoolean("is_first", true);
-//        if (b) {
-//            RequestQueue mQueue = Volley.newRequestQueue(getContext());
-//            MyStringRequest stringRequest = new MyStringRequest("http://169.254.214.59:8889/HotCoupBean",//"http://169.254.214.59:8889",
-//                    new Response.Listener<String>() {
-//                        @Override
-//                        public void onResponse(String response) {
-//                            Log.e("GridView2Card",response);
-//
-//                            ContentValues contentvalues = new ContentValues();
-//                            contentvalues.put(SQLiteColumn.JSONSTRING,response);
-//                            contentvalues.put(SQLiteColumn.RECORDTYPE,"HotCoupBean");
-//                            resolver.insert(Uri.parse(path),contentvalues);
-//                            try {
-//                                listgoodtrick.clear();
-//                                JSONArray jsonArray = new JSONArray(response);
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//                                    JSONObject jo = jsonArray.getJSONObject(i);
-//                                    String strPicUrl = jo.getString("strPicUrl");
-//                                    String strTitle = jo.getString("strTitle");
-//                                    String strAuthor = jo.getString("strAuthor");
-//                                    int intLike = jo.getInt("intLike");
-//                                    GriddoGoodTrick griddomaiozhao = new GriddoGoodTrick(strPicUrl, strTitle, intLike, strAuthor);
-//                                    listgoodtrick.add(griddomaiozhao);
-//
-//                                }
-//                                gridbaseadapter.notifyDataSetChanged();
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("GridView2Card", "onErrorResponse" + error.getMessage(), error);
-//                        }
-//                    });
-//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-//                    (int) MyStringRequest.SOCKET_TIMEOUT, 0,
-//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//
-//            mQueue.add(stringRequest);
-//      //      share.edit().putBoolean("is_first", false).commit();
-//        }else {
+
+        mresolver = getContext().getContentResolver();
+
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
-        Cursor cursor = resolver.query(Uri.parse(path), null, null, null, null);
+        Cursor cursor = mresolver.query(Uri.parse(mpath), null, null, null, null);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -179,7 +100,7 @@ public class GridView2Card extends BaseCard {
                 if (dataArrayList.get(j).getRecordType().equals("hotCoupBeen")) {
 
                     try {
-                        listgoodtrick.clear();
+                        mlistgoodtrick.clear();
                         JSONArray jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jo = jsonArray.getJSONObject(i);
@@ -188,10 +109,10 @@ public class GridView2Card extends BaseCard {
                             String strAuthor = jo.getString("strAuthor");
                             int intLike = jo.getInt("intLike");
                             GriddoGoodTrick griddomaiozhao = new GriddoGoodTrick(strPicUrl, strTitle, intLike, strAuthor);
-                            listgoodtrick.add(griddomaiozhao);
+                            mlistgoodtrick.add(griddomaiozhao);
 
                         }
-                        gridbaseadapter.notifyDataSetChanged();
+                        mgridbaseadapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -200,7 +121,7 @@ public class GridView2Card extends BaseCard {
             }
 
 
-//        }
+
 
         }
     }

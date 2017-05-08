@@ -22,9 +22,9 @@ import com.wl.atomsparenting.cards.MainActivityTopticCard;
 import com.wl.atomsparenting.cards.RollPagerView2Card;
 import com.wl.atomsparenting.cards.RollPagerViewCard;
 import com.wl.atomsparenting.cards.TarentoCard;
-import com.wl.atomsparenting.cards.ThreeSmallClassCard;
-import com.wl.atomsparenting.cards.TwoFragmentActionCard;
-import com.wl.atomsparenting.cards.TwoFragmentCircleCard;
+import com.wl.atomsparenting.cards.ThirdSmallClassCard;
+import com.wl.atomsparenting.cards.SecondFragmentActionCard;
+import com.wl.atomsparenting.cards.SecondFragmentCircleCard;
 
 import java.util.ArrayList;
 
@@ -55,12 +55,21 @@ public class FourFragmentAdapter extends RecyclerView.Adapter<FourFragmentAdapte
             view = new GridView2Card(context);
         } else if (viewType == MainActivityTopticBean.class.getCanonicalName().hashCode()) {
             view = new MainActivityTopticCard(context);
+<<<<<<< HEAD
         } else if (viewType == SecondFragmentCircleBean.class.getCanonicalName().hashCode()) {
             view = new TwoFragmentCircleCard(context);
         } else if (viewType == SecondFragmentActionBean.class.getCanonicalName().hashCode()) {
             view = new TwoFragmentActionCard(context);
         } else if (viewType == ThirdSmallClassBean.class.getCanonicalName().hashCode()) {
             view = new ThreeSmallClassCard(context);
+=======
+        } else if (viewType == TwoFragmentCircleBean.class.getCanonicalName().hashCode()) {
+            view = new SecondFragmentCircleCard(context);
+        } else if (viewType == TwoFragmentActionBean.class.getCanonicalName().hashCode()) {
+            view = new SecondFragmentActionCard(context);
+        } else if (viewType == ThreeSmallClassBean.class.getCanonicalName().hashCode()) {
+            view = new ThirdSmallClassCard(context);
+>>>>>>> 0824dcbf302978b2cda6d494d04e7a1c9a0aa1d1
         } else if (viewType == RollPagerView2Bean.class.getCanonicalName().hashCode()) {
             view = new RollPagerView2Card(context);
         }

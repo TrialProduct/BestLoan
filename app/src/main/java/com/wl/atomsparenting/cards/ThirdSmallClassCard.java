@@ -9,11 +9,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.ListViewAdapter;
+import com.wl.atomsparenting.adapter.ThreeListViewItem;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
-import com.wl.atomsparenting.domain.HotTopticBean;
+import com.wl.atomsparenting.domain.MicroBean;
 import com.wl.atomsparenting.views.CursorListView;
 
 import org.json.JSONArray;
@@ -22,40 +22,38 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static android.R.id.list;
-import static com.wl.atomsparenting.contentprovider.SqliteReadDataUtil.path;
-
 /**
  * Created by le on 2017/4/17.
  */
 
-public class MainActivityTopticCard extends BaseCard {
+public class ThirdSmallClassCard extends BaseCard {
     private String mpath = "content://com.wl.atomsparenting.contentprovider/atomsparentingtable";
     private ContentResolver mresolver;
 
 
-    private CursorListView mlistview;
-    private ArrayList<HotTopticBean> mlist;
-    private ListViewAdapter mlistViewAdapter;
-    public MainActivityTopticCard(@NonNull Context context) {
+    private CursorListView mrvthird;
+    private ArrayList<MicroBean> mrvlist;
+    private ThreeListViewItem tli;
+
+    public ThirdSmallClassCard(@NonNull Context context) {
         super(context);
     }
 
-    public MainActivityTopticCard(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public ThirdSmallClassCard(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
     @Override
     protected int getFindView() {
-        return R.layout.mainactivity_toptic;
+        return R.layout.threefragmentcursorlistview;
     }
 
     @Override
     protected void getMaterial() {
-        mlistview = (CursorListView) mView.findViewById(R.id.main_toptic_listview);
-        mlist = new ArrayList<>();
-        mlistViewAdapter = new ListViewAdapter(mlist, mContext);
-        mlistview.setAdapter(mlistViewAdapter);
+        mrvthird = (CursorListView) mView.findViewById(R.id.three_recyclerview);
+        mrvlist = new ArrayList<>();
+        tli = new ThreeListViewItem(mrvlist, mContext);
+        mrvthird.setAdapter(tli);
     }
 
     @Override
@@ -63,7 +61,6 @@ public class MainActivityTopticCard extends BaseCard {
 
 
         mresolver = getContext().getContentResolver();
-
 
 
         ArrayList<Data> dataArrayList = new ArrayList<>();
@@ -82,23 +79,24 @@ public class MainActivityTopticCard extends BaseCard {
 
             for (int j = 0; j < dataArrayList.size(); j++) {
 
-                if (dataArrayList.get(j).getRecordType().equals("hotTopticBeen")) {
+                if (dataArrayList.get(j).getRecordType().equals("microBeen")) {
 
+                    JSONArray jsonArray = null;
                     try {
-                        mlist.clear();
-                        JSONArray jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
+                        mrvlist.clear();
+                        jsonArray = new JSONArray(dataArrayList.get(j).getJsonString());
                         for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject jo=jsonArray.getJSONObject(i);
-                            String strBackPicUrl=jo.getString("strBackPicUrl");
-                            String strIntroduce=jo.getString("strIntroduce");
-                            int intAssess=jo.getInt("intAssess");
-                            int intLike=jo.getInt("intLike");
+                            JSONObject jo = jsonArray.getJSONObject(i);
+                            String strListPicUrl = jo.getString("strListPicUrl");
+                            String strListTitle = jo.getString("strListTitle");
+                            String strDate = jo.getString("strDate");
+                            int intPrice = jo.getInt("intPrice");
+                            int intAssess = jo.getInt("intAssess");
 
-                            HotTopticBean hotTopticBean=new HotTopticBean(null,strBackPicUrl,intAssess,intLike,strIntroduce);
-                            mlist.add(hotTopticBean);
-
+                            MicroBean microBean = new MicroBean(null, null, strListPicUrl, strListTitle, strDate, intPrice, intAssess);
+                            mrvlist.add(microBean);
                         }
-                        mlistViewAdapter.notifyDataSetChanged();
+                        tli.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -112,10 +110,5 @@ public class MainActivityTopticCard extends BaseCard {
         }
 
 
-
-
-
     }
-
-
 }
