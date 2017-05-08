@@ -17,31 +17,31 @@ import java.util.ArrayList;
  * Created by le on 2017/4/17.
  */
 
-public class GridView1Card extends BaseCard {
-    private GridView gridview;
-    private Gridbaseadapter adapter;
-    private ArrayList<Griddomain> list;
-    private int image[] = {
-            R.drawable.gushi,
-            R.drawable.jiankang,
-            R.drawable.yingwen,
+public class GridView1Cardsys extends BaseCard {
+    private GridView mgv;
+    private Gridbaseadapter madapter;
+    private ArrayList<Griddomain> mlist;
+    private int mimage[] = {
+            R.drawable.story,
+            R.drawable.Health,
+            R.drawable.english,
             R.drawable.icon_podcast_psychology,
-            R.drawable.shougong,
-            R.drawable.ziran,
-            R.drawable.yishu,
-            R.drawable.letu,
+            R.drawable.handwork,
+            R.drawable.nature,
+            R.drawable.art,
+            R.drawable.happy_journey,
             R.drawable.icon_podcast_food,
             R.drawable.icon_podcast_more
     };
-    private String strname[] = {
+    private String mstrname[] = {
             "故事", "健康", "英文", "心理", "手工", "自然", "艺术", "乐途", "美食", "更多"
     };
 
-    public GridView1Card(@NonNull Context context) {
+    public GridView1Cardsys(@NonNull Context context) {
         super(context);
     }
 
-    public GridView1Card(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public GridView1Cardsys(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -52,19 +52,19 @@ public class GridView1Card extends BaseCard {
 
     @Override
     protected void getMaterial() {
-        gridview = (GridView) mView.findViewById(R.id.maingoodtrick_gridview);
+        mgv = (GridView) mView.findViewById(R.id.maingoodtrick_gridview);
 
 
     }
 
     @Override
     public void bindBean(BaseBean baseBean) {
-        list = new ArrayList<>();
+        mlist = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            Griddomain gd = new Griddomain(image[i], strname[i]);
-            list.add(gd);
+            Griddomain gd = new Griddomain(mimage[i], mstrname[i]);
+            mlist.add(gd);
         }
-        adapter = new Gridbaseadapter(list, mContext);
-        gridview.setAdapter(adapter);
+        madapter = new Gridbaseadapter(mlist, mContext);
+        mgv.setAdapter(madapter);
     }
 }

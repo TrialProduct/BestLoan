@@ -2,7 +2,7 @@ package com.wl.atomsparenting.fragment;
 
 import com.wl.atomsparenting.adapter.FourFragmentAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
-import com.wl.atomsparenting.beans.TwoFragmentCircleBean;
+import com.wl.atomsparenting.beans.SecondFragmentCircleBean;
 
 import java.util.ArrayList;
 
@@ -17,8 +17,8 @@ public class TwoFragment_Circle extends BaseListFragment {
     @Override
     protected void sonStart() {
         beanArrayList = new ArrayList<>();
-        TwoFragmentCircleBean twoFragmentCircleBean = new TwoFragmentCircleBean();
-        beanArrayList.add(twoFragmentCircleBean);
+        SecondFragmentCircleBean secondFragmentCircleBean = new SecondFragmentCircleBean();
+        beanArrayList.add(secondFragmentCircleBean);
         fourFragmentAdapter = new FourFragmentAdapter(beanArrayList, getContext());
         setadapter(fourFragmentAdapter);
     }

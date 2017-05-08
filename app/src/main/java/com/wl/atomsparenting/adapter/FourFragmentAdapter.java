@@ -12,11 +12,11 @@ import com.wl.atomsparenting.beans.MainActivityTopticBean;
 import com.wl.atomsparenting.beans.RollPagerView2Bean;
 import com.wl.atomsparenting.beans.RollPagerViewBean;
 import com.wl.atomsparenting.beans.TarentoBean;
-import com.wl.atomsparenting.beans.ThreeSmallClassBean;
-import com.wl.atomsparenting.beans.TwoFragmentActionBean;
-import com.wl.atomsparenting.beans.TwoFragmentCircleBean;
+import com.wl.atomsparenting.beans.ThirdSmallClassBean;
+import com.wl.atomsparenting.beans.SecondFragmentActionBean;
+import com.wl.atomsparenting.beans.SecondFragmentCircleBean;
 import com.wl.atomsparenting.cards.BaseCard;
-import com.wl.atomsparenting.cards.GridView1Card;
+import com.wl.atomsparenting.cards.GridView1Cardsys;
 import com.wl.atomsparenting.cards.GridView2Card;
 import com.wl.atomsparenting.cards.MainActivityTopticCard;
 import com.wl.atomsparenting.cards.RollPagerView2Card;
@@ -48,18 +48,18 @@ public class FourFragmentAdapter extends RecyclerView.Adapter<FourFragmentAdapte
         if (viewType == RollPagerViewBean.class.getCanonicalName().hashCode()) {
             view = new RollPagerViewCard(context);
         } else if (viewType == GridView1Bean.class.getCanonicalName().hashCode()) {
-            view = new GridView1Card(context);
+            view = new GridView1Cardsys(context);
         } else if (viewType == TarentoBean.class.getCanonicalName().hashCode()) {
             view = new TarentoCard(context);
         } else if (viewType == GridView2Bean.class.getCanonicalName().hashCode()) {
             view = new GridView2Card(context);
         } else if (viewType == MainActivityTopticBean.class.getCanonicalName().hashCode()) {
             view = new MainActivityTopticCard(context);
-        } else if (viewType == TwoFragmentCircleBean.class.getCanonicalName().hashCode()) {
+        } else if (viewType == SecondFragmentCircleBean.class.getCanonicalName().hashCode()) {
             view = new TwoFragmentCircleCard(context);
-        } else if (viewType == TwoFragmentActionBean.class.getCanonicalName().hashCode()) {
+        } else if (viewType == SecondFragmentActionBean.class.getCanonicalName().hashCode()) {
             view = new TwoFragmentActionCard(context);
-        } else if (viewType == ThreeSmallClassBean.class.getCanonicalName().hashCode()) {
+        } else if (viewType == ThirdSmallClassBean.class.getCanonicalName().hashCode()) {
             view = new ThreeSmallClassCard(context);
         } else if (viewType == RollPagerView2Bean.class.getCanonicalName().hashCode()) {
             view = new RollPagerView2Card(context);
@@ -92,12 +92,12 @@ public class FourFragmentAdapter extends RecyclerView.Adapter<FourFragmentAdapte
             viewtype = GridView2Bean.class.getCanonicalName().hashCode();
         } else if (list.get(position) instanceof MainActivityTopticBean) {
             viewtype = MainActivityTopticBean.class.getCanonicalName().hashCode();
-        } else if (list.get(position) instanceof TwoFragmentCircleBean) {
-            viewtype = TwoFragmentCircleBean.class.getCanonicalName().hashCode();
-        } else if (list.get(position) instanceof TwoFragmentActionBean) {
-            viewtype = TwoFragmentActionBean.class.getCanonicalName().hashCode();
-        } else if (list.get(position) instanceof ThreeSmallClassBean) {
-            viewtype = ThreeSmallClassBean.class.getCanonicalName().hashCode();
+        } else if (list.get(position) instanceof SecondFragmentCircleBean) {
+            viewtype = SecondFragmentCircleBean.class.getCanonicalName().hashCode();
+        } else if (list.get(position) instanceof SecondFragmentActionBean) {
+            viewtype = SecondFragmentActionBean.class.getCanonicalName().hashCode();
+        } else if (list.get(position) instanceof ThirdSmallClassBean) {
+            viewtype = ThirdSmallClassBean.class.getCanonicalName().hashCode();
         }else if (list.get(position) instanceof RollPagerView2Bean) {
             viewtype = RollPagerView2Bean.class.getCanonicalName().hashCode();
         }
