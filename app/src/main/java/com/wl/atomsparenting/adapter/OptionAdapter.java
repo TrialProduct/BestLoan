@@ -22,7 +22,7 @@ public class OptionAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Context mContext;
 
-    public OptionAdapter(ArrayList<Griddomain> mArrayList, Context mContext) {
+    public OptionAdapter(ArrayList<Griddomain> mArrayList  , Context mContext) {
         this.mArrayList = mArrayList;
         this.mContext = mContext;
         inflater = LayoutInflater.from(mContext);
