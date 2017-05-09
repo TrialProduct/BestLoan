@@ -58,7 +58,7 @@ public class BaseListBeanAdapter extends RecyclerView.Adapter<BaseListBeanAdapte
         } else if (viewType == MainActivityTopticBean.class.getCanonicalName().hashCode()) {
             view = new MainActivityTopticCard(mContext);
         } else if (viewType == SecondFragmentCircleBean.class.getCanonicalName().hashCode()) {
-            view = new SecondFragmentActionCard(mContext);
+            view = new SecondFragmentCircleCard(mContext);
         } else if (viewType == SecondFragmentActionBean.class.getCanonicalName().hashCode()) {
             view = new SecondFragmentActionCard(mContext);
         } else if (viewType == ThirdSmallClassBean.class.getCanonicalName().hashCode()) {

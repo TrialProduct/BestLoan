@@ -22,9 +22,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static android.R.id.list;
-import static com.wl.atomsparenting.contentprovider.SqliteReadDataUtil.path;
-
 /**
  * Created by le on 2017/4/17.
  */
@@ -34,15 +31,12 @@ public class MainActivityTopticCard extends BaseCard {
     private ContentResolver mresolver;
 
 
-<<<<<<< HEAD
-    private CursorListView listview;
-    private ArrayList<HotTopticBean> list;
-    private HotTopTicAdapter listViewAdapter;
-=======
+
+
     private CursorListView mlistview;
     private ArrayList<HotTopticBean> mlist;
-    private ListViewAdapter mlistViewAdapter;
->>>>>>> 0644114a8c4e536627331d3955b94957889c3856
+    private HotTopTicAdapter mlistViewAdapter;
+
     public MainActivityTopticCard(@NonNull Context context) {
         super(context);
     }
@@ -58,17 +52,12 @@ public class MainActivityTopticCard extends BaseCard {
 
     @Override
     protected void getMaterial() {
-<<<<<<< HEAD
-        listview = (CursorListView) mView.findViewById(R.id.main_toptic_listview);
-        list = new ArrayList<>();
-        listViewAdapter = new HotTopTicAdapter(list, mContext);
-        listview.setAdapter(listViewAdapter);
-=======
+
         mlistview = (CursorListView) mView.findViewById(R.id.main_toptic_listview);
         mlist = new ArrayList<>();
-        mlistViewAdapter = new ListViewAdapter(mlist, mContext);
+        mlistViewAdapter = new HotTopTicAdapter(mlist, mContext);
         mlistview.setAdapter(mlistViewAdapter);
->>>>>>> 0644114a8c4e536627331d3955b94957889c3856
+
     }
 
     @Override
