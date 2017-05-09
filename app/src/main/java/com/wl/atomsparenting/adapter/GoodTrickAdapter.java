@@ -19,26 +19,26 @@ import java.util.ArrayList;
  * Created by le on 2017/4/10.
  */
 
-public class GridGoodTrickbaseadapter extends BaseAdapter {
-    private ArrayList<GriddoGoodTrick> list;
+public class GoodTrickAdapter extends BaseAdapter {
+    private ArrayList<GriddoGoodTrick> mArrayList;
     private LayoutInflater inflater;
-    private Context context;
+    private Context mContext;
 
-    public GridGoodTrickbaseadapter(ArrayList<GriddoGoodTrick> list, Context context) {
-        this.list = list;
-        this.context = context;
-        inflater = LayoutInflater.from(context);
+    public GoodTrickAdapter(ArrayList<GriddoGoodTrick> mArrayList, Context mContext) {
+        this.mArrayList = mArrayList;
+        this.mContext = mContext;
+        inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return mArrayList.size();
     }
 
 
     @Override
     public Object getItem(int i) {
-        return list.get(i);
+        return mArrayList.get(i);
     }
 
     @Override
@@ -48,32 +48,41 @@ public class GridGoodTrickbaseadapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
         ViewHolder vh = null;
+
         if (view == null) {
+
             vh = new ViewHolder();
+
             view = inflater.inflate(R.layout.main_goodtrick, null);
-            vh.main_imgimg = (ImageView) view.findViewById(R.id.main_imgimg);
-            vh.main_tvtitle = (TextView) view.findViewById(R.id.main_tvtitle);
-            vh.main_tvtvpeple = (TextView) view.findViewById(R.id.main_tvtvpeple);
-            vh.main_tvname = (TextView) view.findViewById(R.id.main_tvname);
+            vh.ivGoodTrick = (ImageView) view.findViewById(R.id.ivGoodTrick);
+            vh.mTvGoodTrickTitle = (TextView) view.findViewById(R.id.mTvGoodTrickTitle);
+            vh.mTvGoodTrickPeple = (TextView) view.findViewById(R.id.mTvGoodTrickPeple);
+            vh.mTvGoodTrickName = (TextView) view.findViewById(R.id.mTvGoodTrickName);
+
             view.setTag(vh);
         } else {
+
             vh = (ViewHolder) view.getTag();
+
         }
-        GriddoGoodTrick gm = list.get(i);
-        Picasso.with(context)
+
+        GriddoGoodTrick gm = mArrayList.get(i);
+        Picasso.with(mContext)
                                         .load(gm.getImg())
                                         .config(Bitmap.Config.RGB_565)
                                         .fit().centerCrop()
-                                        .into(vh.main_imgimg);
-        vh.main_tvtitle.setText(gm.getTitle());
-        vh.main_tvname.setText(gm.getName());
-        vh.main_tvtvpeple.setText(gm.getNumber() + "人感兴趣");
+                                        .into(vh.ivGoodTrick);
+        vh.mTvGoodTrickTitle.setText(gm.getTitle());
+        vh.mTvGoodTrickName.setText(gm.getName());
+        vh.mTvGoodTrickPeple.setText(gm.getNumber() + "人感兴趣");
+
         return view;
     }
 
     class ViewHolder {
-        ImageView main_imgimg;
-        TextView main_tvtitle, main_tvtvpeple,main_tvname;
+        ImageView ivGoodTrick;
+        TextView mTvGoodTrickTitle, mTvGoodTrickPeple, mTvGoodTrickName;
     }
 }

@@ -11,25 +11,26 @@ import java.util.ArrayList;
  */
 
 public class FragmentAdapter extends FragmentPagerAdapter {
-    ArrayList<Fragment> list;
+    ArrayList<Fragment> mArrayList;
 
     public FragmentAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public FragmentAdapter(FragmentManager fm, ArrayList<Fragment> list) {
+    public FragmentAdapter(FragmentManager fm, ArrayList<Fragment> mArrayList) {
         super(fm);
-        this.list = list;
+        this.mArrayList = mArrayList;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return list.get(position);
+
+        return mArrayList.get(position);
 
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return mArrayList.size();
     }
 }

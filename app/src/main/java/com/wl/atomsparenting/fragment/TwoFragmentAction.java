@@ -1,8 +1,8 @@
 package com.wl.atomsparenting.fragment;
 
-import com.wl.atomsparenting.adapter.FourFragmentAdapter;
+import com.wl.atomsparenting.adapter.BaseListBeanAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
-import com.wl.atomsparenting.beans.TwoFragmentActionBean;
+import com.wl.atomsparenting.beans.SecondFragmentActionBean;
 
 import java.util.ArrayList;
 
@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 public class TwoFragmentAction extends BaseListFragment {
     private ArrayList<BaseBean> beanArrayList;
-    private FourFragmentAdapter fourFragmentAdapter;
+    private BaseListBeanAdapter fourFragmentAdapter;
 
     @Override
     protected void sonStart() {
         beanArrayList = new ArrayList<>();
-        TwoFragmentActionBean twoFragmentBean = new TwoFragmentActionBean();
+        SecondFragmentActionBean twoFragmentBean = new SecondFragmentActionBean();
         beanArrayList.add(twoFragmentBean);
-        fourFragmentAdapter = new FourFragmentAdapter(beanArrayList, getContext());
+        fourFragmentAdapter = new BaseListBeanAdapter(beanArrayList, getContext());
         setadapter(fourFragmentAdapter);
     }
 }

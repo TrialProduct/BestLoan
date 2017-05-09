@@ -1,6 +1,6 @@
 package com.wl.atomsparenting.fragment;
 
-import com.wl.atomsparenting.adapter.FourFragmentAdapter;
+import com.wl.atomsparenting.adapter.BaseListBeanAdapter;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.beans.GridView1Bean;
 import com.wl.atomsparenting.beans.GridView2Bean;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class MainActivity_GoodTrick extends BaseListFragment {
     private ArrayList<BaseBean> beanArrayList;
-    private FourFragmentAdapter fourFragmentAdapter;
+    private BaseListBeanAdapter fourFragmentAdapter;
 
     @Override
     protected void sonStart() {
@@ -28,7 +28,7 @@ public class MainActivity_GoodTrick extends BaseListFragment {
         beanArrayList.add(gridView1Bean);
         beanArrayList.add(tarentoBean);
         beanArrayList.add(gridView2Bean);
-        fourFragmentAdapter = new FourFragmentAdapter(beanArrayList, getContext());
+        fourFragmentAdapter = new BaseListBeanAdapter(beanArrayList, getContext());
         setadapter(fourFragmentAdapter);
 
     }

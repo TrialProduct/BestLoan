@@ -7,10 +7,9 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.ThreeListViewItem;
+import com.wl.atomsparenting.adapter.ThridListViewItem;
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
@@ -34,7 +33,7 @@ public class ThreeSmallClassCard extends BaseCard {
 
     private CursorListView three_recyclerview;
     private ArrayList<MicroBean> listrecyclerview;
-    private ThreeListViewItem tli;
+    private ThridListViewItem tli;
 
     public ThreeSmallClassCard(@NonNull Context context) {
         super(context);
@@ -53,7 +52,7 @@ public class ThreeSmallClassCard extends BaseCard {
     protected void getMaterial() {
         three_recyclerview = (CursorListView) mView.findViewById(R.id.three_recyclerview);
         listrecyclerview = new ArrayList<>();
-        tli = new ThreeListViewItem(listrecyclerview, mContext);
+        tli = new ThridListViewItem(listrecyclerview, mContext);
         three_recyclerview.setAdapter(tli);
     }
 
