@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/three_item_img"
+        android:id="@+id/thrid_item_img"
         android:layout_width="120dp"
         android:layout_height="80dp"
         android:layout_margin="10dp"
@@ -12,31 +12,31 @@
         android:src="@drawable/welcome_page_four" />
 
     <TextView
-        android:id="@+id/three_item_title"
+        android:id="@+id/thrid_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/three_item_img"
-        android:layout_toRightOf="@id/three_item_img"
+        android:layout_alignTop="@id/thrid_item_img"
+        android:layout_toRightOf="@id/thrid_item_img"
         android:text="只要一场游戏，解决你的育儿烦恼"
         android:textColor="#000"
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/three_item_time"
+        android:id="@+id/thrid_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/three_item_title"
-        android:layout_below="@id/three_item_title"
+        android:layout_alignLeft="@id/thrid_item_title"
+        android:layout_below="@id/thrid_item_title"
         android:layout_marginTop="2dp"
         android:text="2016-12-21 20:00"
         android:textSize="10sp" />
 
     <TextView
-        android:id="@+id/three_item_money"
+        android:id="@+id/thrid_item_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/three_item_title"
-        android:layout_below="@id/three_item_time"
+        android:layout_alignLeft="@id/thrid_item_title"
+        android:layout_below="@id/thrid_item_time"
         android:layout_marginTop="2dp"
         android:text="¥ 10.00"
         android:textColor="#f00"
@@ -45,15 +45,15 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/three_item_img"
-        android:layout_alignLeft="@id/three_item_money"
+        android:layout_alignBottom="@id/thrid_item_img"
+        android:layout_alignLeft="@id/thrid_item_money"
         android:src="@drawable/icon_podcast_teacher" />
 
     <TextView
-        android:id="@+id/three_item_pep"
+        android:id="@+id/thrid_item_pep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/three_item_img"
+        android:layout_alignBottom="@id/thrid_item_img"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:text="1012人学过"

@@ -9,7 +9,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.wl.atomsparenting.R;
-import com.wl.atomsparenting.adapter.TwoFragment_circle_ListAdapter;
+import com.wl.atomsparenting.adapter.SecondFragment_circle_ListAdapter;
+
 import com.wl.atomsparenting.beans.BaseBean;
 import com.wl.atomsparenting.contentprovider.Data;
 import com.wl.atomsparenting.contentprovider.SQLiteColumn;
@@ -32,7 +33,7 @@ public class SecondFragmentCircleCard extends BaseCard {
 
     private CursorListView mlv;
     private ArrayList<CircleBean> mlist;
-    private TwoFragment_circle_ListAdapter tql;
+    private SecondFragment_circle_ListAdapter tql;
 
     public SecondFragmentCircleCard(@NonNull Context context) {
         super(context);
@@ -51,7 +52,7 @@ public class SecondFragmentCircleCard extends BaseCard {
     protected void getMaterial() {
         mlv = (CursorListView) mView.findViewById(R.id.twofragment_circle_listview);
         mlist = new ArrayList<>();
-        tql = new TwoFragment_circle_ListAdapter(mlist, mContext);
+        tql = new SecondFragment_circle_ListAdapter(mlist, mContext);
         mlv.setAdapter(tql);
 
     }
